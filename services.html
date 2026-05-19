@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги — DormSpace</title>
+    <style>
+        :root { --bg-color: #4682B4; --text-color: #FFFFFF; --accent-color: #DDA0DD; --btn-hover: #EACEEA; --font-family: system-ui, -apple-system, sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; } 
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; position: relative; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .highlight { color: var(--accent-color); }
+        
+        /* ЗВЕЗДОЧКИ */
+        .star-svg { position: fixed; fill: var(--accent-color); opacity: 0.3; z-index: -1; animation: superPulse 4s infinite alternate ease-in-out; }
+        .star-1 { top: 15%; left: 5%; width: 80px; height: 80px; animation-delay: 0s; }
+        .star-2 { top: 80%; left: 90%; width: 60px; height: 60px; animation-delay: 1s; }
+        .star-3 { top: 50%; left: 85%; width: 40px; height: 40px; animation-delay: 2s; }
+        .star-4 { top: 20%; left: 90%; width: 50px; height: 50px; animation-delay: 3s; }
+        @keyframes superPulse { 0% { transform: scale(0.8) rotate(0deg); opacity: 0.2; } 100% { transform: scale(1.15) rotate(15deg); opacity: 0.5; } }
+
+        header { width: 100%; padding: 25px 40px; display: flex; justify-content: center; position: fixed; top: 0; background: rgba(70, 130, 180, 0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .header-content { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: 1px; }
+        .logo:hover { color: var(--accent-color); }
+        nav ul { display: flex; list-style: none; gap: 35px; align-items: center; }
+        nav a { font-weight: 600; font-size: 15px; opacity: 0.9; }
+        nav a:hover, .dropdown:hover > a { color: var(--accent-color); opacity: 1; }
+        
+        .dropdown { position: relative; }
+        .dropdown-content { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); background-color: #3b73a1; min-width: 220px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); padding: 10px 0; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .dropdown:hover .dropdown-content { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(5px); }
+        .dropdown-content a { display: block; padding: 12px 20px; font-size: 14px; }
+        .dropdown-content a:hover { background-color: rgba(221, 160, 221, 0.2); color: var(--accent-color); }
+        
+        .btn-register { padding: 12px 26px; background-color: var(--accent-color); color: #4682B4; border: none; border-radius: 24px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(221, 160, 221, 0.25); }
+
+        main { padding-top: 100px; display: flex; flex-direction: column; align-items: center; }
+        
+        .service-section { width: 100%; min-height: 80vh; display: flex; justify-content: center; align-items: center; padding: 60px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .service-section:nth-child(even) { background-color: rgba(0,0,0,0.05); }
+        
+        .section-content { max-width: 1100px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .service-section:nth-child(even) .section-content { grid-template-columns: 1fr 1fr; direction: rtl; }
+        .service-section:nth-child(even) .section-text, .service-section:nth-child(even) .phone-container { direction: ltr; }
+        
+        .section-text h2 { font-size: 42px; font-weight: 900; margin-bottom: 20px; color: var(--accent-color); text-transform: uppercase; letter-spacing: -1px; line-height: 1.1; }
+        .section-text p { font-size: 18px; line-height: 1.7; opacity: 0.9; }
+        
+        /* МОКАП ТЕЛЕФОНА */
+        .phone-container { display: flex; justify-content: center; align-items: center; width: 100%; }
+        .mock-phone { width: 260px; height: 530px; background-color: #0d1621; border: 12px solid #111; border-radius: 36px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); overflow: hidden; position: relative; }
+        /* "Челочка" телефона */
+        .mock-phone::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 25px; background-color: #111; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10; }
+        .phone-screen { width: 100%; height: 100%; background-color: #152738; display: flex; justify-content: center; align-items: center; }
+        .phone-screen img { width: 100%; height: 100%; object-fit: cover; }
+    </style></head><body>
+    <svg class="star-svg star-1" viewBox="0 0 24 24"><path d="M12 0l3.09 8.36L24 9.73l-6.18 5.73L19.45 24 12 19.77 4.55 24l1.63-8.54L0 9.73l8.91-1.37z"/></svg>
+    <svg class="star-svg star-2" viewBox="0 0 24 24"><path d="M12 0l3.09 8.36L24 9.73l-6.18 5.73L19.45 24 12 19.77 4.55 24l1.63-8.54L0 9.73l8.91-1.37z"/></svg>
+    <svg class="star-svg star-3" viewBox="0 0 24 24"><path d="M12 0l3.09 8.36L24 9.73l-6.18 5.73L19.45 24 12 19.77 4.55 24l1.63-8.54L0 9.73l8.91-1.37z"/></svg>
+    <svg class="star-svg star-4" viewBox="0 0 24 24"><path d="M12 0l3.09 8.36L24 9.73l-6.18 5.73L19.45 24 12 19.77 4.55 24l1.63-8.54L0 9.73l8.91-1.37z"/></svg>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">DORMSPACE</a>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="services.html" class="highlight">Услуги</a>
+                        <div class="dropdown-content">
+                            <a href="#rooms">Управление комнатами</a>
+                            <a href="#students">Список проживающих</a>
+                            <a href="#events">Календарь событий</a>
+                            <a href="#payment">Учет оплат</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="subscriptions.html">Подписки</a></li> 
+                </ul>
+            </nav>
+            <a href="registration.html"><button class="btn-register">Войти / Регистрация</button></a>
+        </div>
+    </header>
+
+    <main>
+        <section id="rooms" class="service-section">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Управление комнатами</h2>
+                    <p>Интерактивная карта номерного фонда open-space. Администратор в реальном времени видит свободные места, статусы ремонта и может распределять студентов в один клик. Никаких бумажных журналов и путаницы.</p>
+                </div>
+                <div class="phone-container">
+                    <div class="mock-phone">
+                        <div class="phone-screen">
+                            <img src="rooms.png" alt="Комнаты">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="students" class="service-section">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Список проживающих</h2>
+                    <p>Умная база данных всех студентов. Быстрый поиск по факультету, курсу или номеру комнаты. В карточке студента хранится история заселений, данные о пропусках и контактная информация.</p>
+                </div>
+                <div class="phone-container">
+                    <div class="mock-phone">
+                        <div class="phone-screen">
+                            <img src="list.png" alt="Студенты">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="service-section">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Календарь событий</h2>
+                    <p>Организация мероприятий, расписание дежурств и уведомления о проверках. Студенты получают пуш-уведомления о важных датах прямо в личный кабинет, чтобы ничего не пропустить.</p>
+                </div>
+                <div class="phone-container">
+                    <div class="mock-phone">
+                        <div class="phone-screen">
+                            <img src="calendar.png" alt="Календарь">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="payment" class="service-section">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Учет оплат</h2>
+                    <p>Прозрачная система биллинга. Автоматическое формирование счетов, интеграция с онлайн-платежами и наглядная статистика по должникам для администрации. Оплата общежития без очередей в кассу.</p>
+                </div>
+                <div class="phone-container">
+                    <div class="mock-phone">
+                        <div class="phone-screen">
+                            <img src="payment.png" alt="Оплаты">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main></body></html>
